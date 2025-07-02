@@ -9,7 +9,7 @@ import pandas as pd
 def showGrafico(btc):
     # Create a scatter plot of the actual vs predicted values
     plt.figure(figsize=(10, 6))
-    plt.plot(btc['End'],btc['Close'], color='blue', alpha=0.5)
+    plt.plot(btc['Date'],btc['Close'], color='blue', alpha=0.5)
     plt.xlabel('Data')
     plt.ylabel('Valor')
     plt.title('Data x Preço')
@@ -19,17 +19,14 @@ def showGrafico(btc):
 
 
 
-btc_data = pd.read_csv("C:/Users/Luiz Felipe/OneDrive/Documentos/CryptoTradingAI/bitcoin_2010-07-17_2024-06-28.csv")
+btc_data = pd.read_csv("C:/Users/Luiz Felipe/OneDrive/Documentos/CryptoTradingAI/btc2018-2025.csv")
+
+btc_data.rename(columns={'Open time': 'Date'}, inplace=True)
+
+btc_data['Date'] = pd.to_datetime(btc_data['Date'])
 
 
-btc_data['End'] = pd.to_datetime(btc_data['End'])
-
-
-btc_data.sort_values('End', inplace=True)
-
-btc_data.drop(columns=['Start'], inplace=True)
-
-btc_data = btc_data[btc_data['End'].dt.year >= 2016]
+btc_data.sort_values('Date', inplace=True)
 
 
 # Prepare features and target variable
