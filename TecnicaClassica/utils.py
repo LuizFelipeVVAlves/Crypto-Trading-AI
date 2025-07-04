@@ -23,10 +23,11 @@ def calculoMediaMovel(df: DataFrame, janelas: list[int]) -> DataFrame:
     return df
 
 
-def calculaFeaturesMediaMovel(df: DataFrame) -> DataFrame:
+def calculaFeaturesMediaMovel(df: DataFrame, janelas: list[int]) -> DataFrame:
 
+    df = calculoMediaMovel(df, janelas)
     # Feature 1: Posição de Curto Prazo
-    df['feat_pos_curto'] = (df['Close'] - df['MMS_7']) / df['MMS_7']
+    '''df['feat_pos_curto'] = (df['Close'] - df['MMS_7']) / df['MMS_7']
 
     # Feature 2: Posição de Médio Prazo
     df['feat_pos_medio'] = (df['Close'] - df['MMS_30']) / df['MMS_30']
@@ -38,6 +39,6 @@ def calculaFeaturesMediaMovel(df: DataFrame) -> DataFrame:
     df['feat_volatilidade_relativa'] = (df['MMS_7'] - df['MMS_30']) / df['MMS_30']
 
     # Feature 5: Sinal de Cruzamento (Estado do Mercado)
-    df['feat_sinal_cruzamento'] = (df['MMS_30'] > df['MMS_50']).astype(int)
+    df['feat_sinal_cruzamento'] = (df['MMS_30'] > df['MMS_50']).astype(int)'''
 
     return df
