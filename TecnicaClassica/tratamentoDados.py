@@ -8,12 +8,16 @@ from utils import calculaFeaturesMediaMovel
 from sklearn.model_selection import train_test_split
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
+import pandas_ta as ta
 
 def TratamentoDeDados() -> pd.DataFrame:
     """
     Função para tratar os dados do DataFrame de Bitcoin.
     """
     btc_data = pd.read_csv("C:/Users/Luiz Felipe/OneDrive/Documentos/CryptoTradingAI/btc2018-2025.csv")
+
+    btc_data.drop(columns=['Open', 'High', 'Low', 'Volume', 'Quote asset volume', 'Number of trades', 'Close time', 'Taker buy base asset volume',
+                           'Taker buy quote asset volume', 'Ignore'], inplace=True)
 
     btc_data.rename(columns={'Open time': 'Date'}, inplace=True)
 
@@ -27,19 +31,19 @@ def TratamentoDeDados() -> pd.DataFrame:
 
     janelas = [60, 90, 120]
 
-    novo = calculaFeaturesMediaMovel(btc_data, janelas)
+    btc_data = calculaFeaturesMediaMovel(btc_data, janelas)
 
-    novo.dropna(inplace=True)
+    btc_data.dropna(inplace=True)
 
-    novo['Target'] = btc_data['Close'].shift(-1)
+    btc_data['Target'] = btc_data['Close'].shift(-1)
 
 
-    novo.dropna(inplace=True)
+    btc_data.dropna(inplace=True)
 
 
     # Prepare features and target variable
-    features = novo[[ 'MMS_60', 'MMS_90', 'MMS_120']].shift(1)
-    target = novo['Target']
+    features = btc_data[[ 'MMS_90', 'MMS_120', 'MMS_60', 'desvio_longo_prazo']]
+    target = btc_data['Target']
 
 
     final_df = pd.concat([features, target], axis=1)
@@ -48,4 +52,4 @@ def TratamentoDeDados() -> pd.DataFrame:
     X_final = final_df.drop('Target', axis=1)
     y_final = final_df['Target']
     
-    return X_final, y_final, novo
+    return X_final, y_final, btc_data
