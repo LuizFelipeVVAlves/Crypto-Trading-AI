@@ -1,27 +1,28 @@
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 from utils import calculaFeaturesMediaMovel
 from sklearn.model_selection import train_test_split
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score, ConfusionMatrixDisplay
 
 
 
-def treinamentoModeloRL(X_final, y_final, novo):
+def treinamentoModeloRL(features, target, novo):
 
-    # Splitting data into training and testing sets - let's use the last 20% of data as test set
-    split_index = int(len(novo) * 0.6)
-    X_train, X_test = X_final[:split_index], X_final[split_index:]
-    y_train, y_test = y_final[:split_index], y_final[split_index:]
+    
+    scaler = StandardScaler()
+    features = scaler.fit_transform(features)
 
-    # Create and train the model
-    modelLR = LinearRegression()
+    X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=42)
+
+    
+    modelLR = LogisticRegression()
     modelLR.fit(X_train, y_train)
-    # Make predictions
+    
     predictions = modelLR.predict(X_test)
 
     calculoMetricas(y_test, predictions)
@@ -29,19 +30,17 @@ def treinamentoModeloRL(X_final, y_final, novo):
 
 def calculoMetricas(y_test, predictions):
     
-    # Evaluate the model
-    mseLR = mean_squared_error(y_test, predictions)
-    rmse = np.sqrt(mseLR)
-    r2LR = r2_score(y_test, predictions)
+    ac_score = accuracy_score(y_test, predictions) #Acertos Totais / Total de Amostras
+    pc_score = precision_score(y_test, predictions) #Acertos Positivos / (Acertos Positivos + Falsos Positivos) --- A capacidade do modelo de não prever como positivo um exemplo negativo
+    rc_score = recall_score(y_test, predictions) # Acertos Positivos / (Acertos Positivos + Falsos Negativos) --- A capacidade do modelo de prever como positivo um exemplo positivo
+    print(f"Accuracy: {ac_score:.2f}")
+    print(f"Precision: {pc_score:.2f}")
+    print(f"Recall: {rc_score:.2f}")
 
+    
+    cm = confusion_matrix(y_test, predictions)
 
-
-    print(f"Modelo de Regressão Linear Treinado!")
-    print(f"RMSE (Erro Quadrático Médio da Raiz): {rmse:.2f}")
-    print("\nIsso significa que, em média, as previsões do modelo erram em torno de ${:.2f}.".format(rmse))
-    print(f"R² (Coeficiente de Determinação): {r2LR:.2f}")
-
-    # Para ver as últimas 5 predições vs. os valores reais
-    comparison = pd.DataFrame({'Real': y_test.tail(), 'Predição': predictions[-5:]})
-    print("\nComparação Final:")
-    print(comparison)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Desce(0)', 'Sobe(1)'])
+    disp.plot(cmap='Blues')
+    plt.title('Matriz de Confusão')
+    plt.show()

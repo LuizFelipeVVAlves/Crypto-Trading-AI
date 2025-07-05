@@ -28,7 +28,10 @@ def calculaFeaturesMediaMovel(df: DataFrame, janelas: list[int]) -> DataFrame:
     df = calculoMediaMovel(df, janelas)
     # Feature 1: Posição de Curto Prazo
 
-    df['desvio_longo_prazo'] = (df['Close'] - df['MMS_60']) / df['MMS_60']
+    for j in janelas:
+        df[f'desvio_{j}'] = (df['Close'] - df[f'MMS_{j}']) / df[f'MMS_{j}']
+
+    
 
     '''df['feat_pos_curto'] = (df['Close'] - df['MMS_7']) / df['MMS_7']
 

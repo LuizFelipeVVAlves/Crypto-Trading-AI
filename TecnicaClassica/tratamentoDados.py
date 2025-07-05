@@ -8,7 +8,7 @@ from utils import calculaFeaturesMediaMovel
 from sklearn.model_selection import train_test_split
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
-import pandas_ta as ta
+
 
 def TratamentoDeDados() -> pd.DataFrame:
     """
@@ -16,7 +16,7 @@ def TratamentoDeDados() -> pd.DataFrame:
     """
     btc_data = pd.read_csv("C:/Users/Luiz Felipe/OneDrive/Documentos/CryptoTradingAI/btc2018-2025.csv")
 
-    btc_data.drop(columns=['Open', 'High', 'Low', 'Volume', 'Quote asset volume', 'Number of trades', 'Close time', 'Taker buy base asset volume',
+    btc_data.drop(columns=['Volume', 'Quote asset volume', 'Number of trades', 'Close time', 'Taker buy base asset volume',
                            'Taker buy quote asset volume', 'Ignore'], inplace=True)
 
     btc_data.rename(columns={'Open time': 'Date'}, inplace=True)
@@ -29,27 +29,42 @@ def TratamentoDeDados() -> pd.DataFrame:
 
     btc_data.sort_values('Date', inplace=True)
 
-    janelas = [60, 90, 120]
+    janelas = [3,7,15]
 
     btc_data = calculaFeaturesMediaMovel(btc_data, janelas)
+    btc_data['open-close']  = btc_data['Open'] - btc_data['Close']
+    btc_data['low-high']  = btc_data['Low'] - btc_data['High']
 
     btc_data.dropna(inplace=True)
 
-    btc_data['Target'] = btc_data['Close'].shift(-1)
+    btc_data['Target'] = np.where(btc_data['Close'].shift(-1) > btc_data['Close'], 1, 0)
 
+    btc_data['Close'] = btc_data['Close'].shift(-1)
 
     btc_data.dropna(inplace=True)
 
-
-    # Prepare features and target variable
-    features = btc_data[[ 'MMS_90', 'MMS_120', 'MMS_60', 'desvio_longo_prazo']]
+    features = btc_data.drop(columns=['Target', 'Date', 'MMS_7', 'MMS_3', 'Close', 'Open', 'High', 'Low'])
     target = btc_data['Target']
 
+    # Para a análise mais completa, junte as features e o target em um único DataFrame
+    df_para_corr = pd.concat([features, target], axis=1)
 
-    final_df = pd.concat([features, target], axis=1)
-    final_df.dropna(inplace=True)
 
-    X_final = final_df.drop('Target', axis=1)
-    y_final = final_df['Target']
+    # Passo 1: Calcule a matriz de correlação
+    corr_matrix = df_para_corr.corr()
+
+
+    # Passo 2: Crie o heatmap para visualizar a matriz
+    plt.figure(figsize=(12, 10)) # Define um bom tamanho para a figura
+
+    sns.heatmap(
+        corr_matrix, 
+        annot=True,      # Escreve os valores numéricos em cada célula
+        cmap='coolwarm', # Esquema de cores: vermelho para positivo, azul para negativo
+        fmt=".2f"        # Formata os números para terem 2 casas decimais
+    )
+
+    plt.title('Matriz de Correlação das Features e do Alvo', fontsize=16)
+    plt.show()
     
-    return X_final, y_final, btc_data
+    return features, target, btc_data
