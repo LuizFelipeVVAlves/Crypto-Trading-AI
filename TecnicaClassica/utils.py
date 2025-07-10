@@ -2,13 +2,7 @@ from pandas import DataFrame
 
 
 def calculoMediaMovel(df: DataFrame, janelas: list[int]) -> DataFrame:
-    """
-    Calcula a média móvel de uma série temporal.
-    
-    :param btc: DataFrame com os dados da série temporal.
-    :param janela: Tamanho da janela para calcular a média móvel.
-    :return: DataFrame com a coluna 'Média Móvel'.
-    """
+   
 
     for janela in janelas:
         # Verifica se a janela é válida
@@ -31,20 +25,5 @@ def calculaFeaturesMediaMovel(df: DataFrame, janelas: list[int]) -> DataFrame:
     for j in janelas:
         df[f'desvio_{j}'] = (df['Close'] - df[f'MMS_{j}']) / df[f'MMS_{j}']
 
-    
-
-    '''df['feat_pos_curto'] = (df['Close'] - df['MMS_7']) / df['MMS_7']
-
-    # Feature 2: Posição de Médio Prazo
-    df['feat_pos_medio'] = (df['Close'] - df['MMS_30']) / df['MMS_30']
-
-    # Feature 3: Força do Momentum
-    df['feat_spread_curto_longo'] = (df['MMS_7'] - df['MMS_50']) / df['MMS_50']
-
-    # Feature 4: Volatilidade Relativa
-    df['feat_volatilidade_relativa'] = (df['MMS_7'] - df['MMS_30']) / df['MMS_30']
-
-    # Feature 5: Sinal de Cruzamento (Estado do Mercado)
-    df['feat_sinal_cruzamento'] = (df['MMS_30'] > df['MMS_50']).astype(int)'''
 
     return df

@@ -46,15 +46,10 @@ def TratamentoDeDados() -> pd.DataFrame:
     features = btc_data.drop(columns=['Target', 'Date', 'MMS_7', 'MMS_3', 'Close', 'Open', 'High', 'Low'])
     target = btc_data['Target']
 
-    # Para a análise mais completa, junte as features e o target em um único DataFrame
     df_para_corr = pd.concat([features, target], axis=1)
 
-
-    # Passo 1: Calcule a matriz de correlação
     corr_matrix = df_para_corr.corr()
-
-
-    # Passo 2: Crie o heatmap para visualizar a matriz
+ 
     plt.figure(figsize=(12, 10)) # Define um bom tamanho para a figura
 
     sns.heatmap(
