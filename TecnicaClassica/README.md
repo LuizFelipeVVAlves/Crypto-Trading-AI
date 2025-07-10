@@ -23,8 +23,6 @@ Python 3.x
 
 Pandas para manipulação de dados.
 
-Pandas TA para cálculo de indicadores técnicos.
-
 Scikit-learn para treinamento do modelo e avaliação.
 
 Matplotlib / Seaborn para visualização de dados.
@@ -48,7 +46,7 @@ O conjunto de dados foi dividido cronologicamente em 80% para treino e 20% para 
 
 ## Resultados e Análise
 
-A primeira análise feita foi para a de finição do Dataset. Optamos por um conjunto de dados que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
+A primeira análise feita foi para a definição do Dataset. Optamos por um conjunto de dados que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
 
 ![Matriz de Correlação](../images/matriz_correlacao.png)
 
@@ -59,18 +57,10 @@ O modelo treinado foi avaliado no conjunto de teste, que corresponde a dados que
 Matriz de Confusão
 A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acertos e os tipos de erros cometidos.
 
-[Insira aqui a imagem da sua Matriz de Confusão, por exemplo: ![Matriz de Confusão](imagens/matriz_confusao.png)]
+![Matriz de Confusão](../images/matriz_confusao.png)
 
-Verdadeiros Positivos (VP): [Seu número aqui]
-
-Verdadeiros Negativos (VN): [Seu número aqui]
-
-Falsos Positivos (FP): [Seu número aqui]
-
-Falsos Negativos (FN): [Seu número aqui]
 
 Métricas de Desempenho
-Métrica
 
 Valor (%)
 
@@ -78,44 +68,22 @@ Descrição
 
 Acurácia
 
-[Seu valor]%
+50%
 
 Porcentagem geral de acertos.
 
 Precisão
 
-[Seu valor]%
+52%
 
 Das vezes que o modelo previu "Sobe", ele acertou.
 
 Recall
 
-[Seu valor]%
+77%
 
 De todas as altas reais, o modelo identificou esta porcentagem.
 
-F1-Score
-
-[Seu valor]
-
-Média harmônica entre Precisão e Recall.
-
-
-Exportar para as Planilhas
-[Faça aqui uma breve análise dos seus resultados numéricos.]
-
 ## Conclusão
-Este projeto estabeleceu com sucesso um pipeline para a criação de um modelo preditivo para o mercado de Bitcoin. O modelo de Regressão Logística serviu como um baseline robusto, demonstrando [resuma a performance, ex: "uma capacidade modesta, mas positiva, de identificar padrões direcionais"].
 
-A análise dos coeficientes e das métricas, como a Precisão, fornece insights valiosos sobre o comportamento do modelo e as dinâmicas de mercado que ele foi capaz de capturar.
-
-## Próximos Passos
-[ ] Testar modelos mais complexos (Random Forest, Gradient Boosting).
-
-[ ] Expandir o conjunto de features com mais indicadores técnicos e dados de volume.
-
-[ ] Realizar um backtesting financeiro para simular o retorno de uma estratégia de negociação.
-
-[ ] Otimizar os hiperparâmetros do modelo para melhorar o desempenho.
-
-[ ] Incorporar dados externos, como análise de sentimento de notícias ou redes sociais.
+A partir da análise dos resultados, é possível concluir o resultado como esperado. O mercado de criptomoedas é conhecido por ser extremamente volátil, então naturalmente é difícil trabalhar com suas previsões. Junto a isso, utilizamos uma técnica de regressão considerada mais simplificada do que outras, justificando os valores calculados. Nesse caso, ele acabou tendendo para previsões positivas, muito provavelmente por que desde o lançamento do bitcoin, ele registrou muito mais médias positivas do que negativas.
