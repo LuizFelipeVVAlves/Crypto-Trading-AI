@@ -1,10 +1,10 @@
 # Técnica Clássica 📈
 
-## Visão Geral
+## Visão Geral 
 
 Modelo de Regressão Logística implementado para prever se o preço do dia seguinte sobe ou desce com base em diferentes features.
 
-## Objetivos do Projeto
+## Objetivos do Projeto 🎯
 
 Realizar o pré-processamento de dados históricos de preço do BTC.
 
@@ -27,7 +27,7 @@ Scikit-learn para treinamento do modelo e avaliação.
 
 Matplotlib / Seaborn para visualização de dados.
 
-## Metodologia
+## Metodologia ⚙️
 O desenvolvimento do modelo seguiu um pipeline bem definido:
 
 1. Coleta e Pré-processamento
@@ -44,7 +44,7 @@ Alvo (Target): 1 se o Preço(Amanhã) > Preço(Hoje), e 0 caso contrário.
 4. Treinamento do Modelo
 O conjunto de dados foi dividido cronologicamente em 80% para treino e 20% para teste. As features foram padronizadas com StandardScaler e, em seguida, um modelo de LogisticRegression foi treinado.
 
-## Resultados e Análise
+## Resultados e Análise 📊
 
 A primeira análise feita foi para a definição do Dataset. Optamos por um conjunto que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
 
@@ -79,6 +79,6 @@ Das vezes que o modelo previu "Sobe", ele acertou.
 
 De todas as altas reais, o modelo identificou esta porcentagem.
 
-## Conclusão
+## Conclusão 🏁
 
 A partir da análise dos resultados, é possível concluir o resultado como esperado. O mercado de criptomoedas é conhecido por ser extremamente volátil, então naturalmente é difícil trabalhar com suas previsões. Junto a isso, utilizamos uma técnica de regressão considerada mais simplificada do que outras, justificando os valores calculados. Nesse caso, ele acabou tendendo para previsões positivas, muito provavelmente por que desde o lançamento do bitcoin, ele registrou muito mais médias positivas do que negativas.
