@@ -50,7 +50,7 @@ O conjunto de dados foi dividido cronologicamente em 80% para treino e 20% para 
 
 A primeira análise feita foi para a de finição do Dataset. Optamos por um conjunto de dados que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
 
-![Matriz de Correlação] (../images/matriz_correlação.png)
+![Matriz de Correlação](../images/matriz_correlacao.png)
 
 Como é possível observar, existem algumas features que estão fortemente relacionadas umas com as outras COM VALOR 1.0, então optamos por tira-las, deixando dentre essas apenas a média móvel dos últimos 15 dias (MMS_15)
 
