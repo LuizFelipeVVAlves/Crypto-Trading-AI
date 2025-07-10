@@ -46,7 +46,7 @@ O conjunto de dados foi dividido cronologicamente em 80% para treino e 20% para 
 
 ## Resultados e Análise
 
-A primeira análise feita foi para a definição do Dataset. Optamos por um conjunto de dados que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
+A primeira análise feita foi para a definição do Dataset. Optamos por um conjunto que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
 
 ![Matriz de Correlação](../images/matriz_correlacao.png)
 
@@ -54,7 +54,7 @@ Como é possível observar, existem algumas features que estão fortemente relac
 
 O modelo treinado foi avaliado no conjunto de teste, que corresponde a dados que o modelo nunca viu durante o treinamento.
 
-Matriz de Confusão
+
 A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acertos e os tipos de erros cometidos.
 
 ![Matriz de Confusão](../images/matriz_confusao.png)
