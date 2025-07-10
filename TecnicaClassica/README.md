@@ -60,25 +60,20 @@ A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acerto
 ![Matriz de Confusão](../images/matriz_confusao.png)
 
 
-Métricas de Desempenho
 
-Valor (%)
-
-Descrição
-
-Acurácia
+**Acurácia**
 
 50%
 
 Porcentagem geral de acertos.
 
-Precisão
+**Precisão**
 
 52%
 
 Das vezes que o modelo previu "Sobe", ele acertou.
 
-Recall
+**Recall**
 
 77%
 
