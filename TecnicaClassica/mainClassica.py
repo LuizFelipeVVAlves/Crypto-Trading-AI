@@ -16,9 +16,9 @@ import pandas as pd
 
 def main():
 
-    X_final, y_final, novo = td.TratamentoDeDados()
+    X_final, y_final, btc_data = td.TratamentoDeDados()
 
-    trl.treinamentoModeloRL(X_final, y_final, novo)
+    trl.treinamentoModeloRL(X_final, y_final, btc_data)
 
 
 

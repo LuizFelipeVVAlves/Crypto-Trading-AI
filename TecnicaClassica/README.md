@@ -1,14 +1,10 @@
-# Modelo Preditivo para a Direção do Preço do Bitcoin 📈
+# Técnica Clássica 📈
 
 ## Visão Geral
-O mercado de criptomoedas é notório por sua volatilidade, o que apresenta tanto riscos quanto oportunidades. Este projeto explora o uso de Machine Learning para tentar encontrar padrões em meio a esse caos aparente.
 
-O objetivo desse trabalho foi desenvolver duas técnicas diferentes para trabalhar com predição da direção de preço. A primeira foi uma técnica clássica utilizando o modelo de Regressão Logística para a tarefa de classificação binária: prever se o preço de fechamento do dia seguinte será de Alta ou Baixa em relação ao dia atual. A segunda técnica foi um modelo moderno baseado em PLN (...)
+Modelo de Regressão Logística implementado para prever se o preço do dia seguinte sobe ou desce com base em diferentes features.
 
 ## Objetivos do Projeto
-Objetivo Principal: Desenvolver um modelo de classificação para prever a direção do movimento diário do preço do Bitcoin.
-
-Objetivos Secundários:
 
 Realizar o pré-processamento de dados históricos de preço do BTC.
 
@@ -40,25 +36,24 @@ O desenvolvimento do modelo seguiu um pipeline bem definido:
 Os dados históricos do Bitcoin (arquivo .csv) foram carregados, limpos e formatados. A coluna de data foi convertida para o tipo datetime e os dados foram ordenados cronologicamente.
 
 2. Engenharia de Features
-Para que o modelo pudesse "entender" o comportamento do mercado, as seguintes features foram criadas usando a biblioteca pandas_ta:
-
-feat_reversao_media: Mede o desvio percentual do preço em relação à sua Média Móvel de 50 dias (MMS_50).
-
-RSI_14: O Índice de Força Relativa, um oscilador de momentum que indica condições de sobrecompra ou sobrevenda.
-
-ATRr_14: O Average True Range, um indicador de volatilidade do mercado.
+Para que o modelo pudesse "entender" o comportamento do mercado, algumas features foram desenvolvidas a partir de médias móveis de curto e médio prazo.
 
 3. Definição do Alvo e Prevenção de Data Leakage
 O problema foi estruturado como uma classificação binária:
 
-Alvo (Target_Direcao): 1 se o Preço(Amanhã) > Preço(Hoje), e 0 caso contrário.
-
-Nota Crítica: Para evitar o vazamento de dados, onde o modelo "trapaceia" usando informações do futuro, a matriz de features X foi deslocada em um período (.shift(1)). Isso garante que a previsão para o dia D utilize apenas dados conhecidos até o final do dia D-1.
+Alvo (Target): 1 se o Preço(Amanhã) > Preço(Hoje), e 0 caso contrário.
 
 4. Treinamento do Modelo
 O conjunto de dados foi dividido cronologicamente em 80% para treino e 20% para teste. As features foram padronizadas com StandardScaler e, em seguida, um modelo de LogisticRegression foi treinado.
 
 ## Resultados e Análise
+
+A primeira análise feita foi para a de finição do Dataset. Optamos por um conjunto de dados que englobasse os dados mais recentes possíveis, sendo estes retirados do site Kagle. Após isso, foi definido algumas features que poderiam ajudar ele a prever as movimentações do mercado, como as médias móveis. Abaixo segue a matriz de correlação com as colunas do dataset.
+
+![Matriz de Correlação] (./images/matriz_correlação.png)
+
+Como é possível observar, existem algumas features que estão fortemente relacionadas umas com as outras COM VALOR 1.0, então optamos por tira-las, deixando dentre essas apenas a média móvel dos últimos 15 dias (MMS_15)
+
 O modelo treinado foi avaliado no conjunto de teste, que corresponde a dados que o modelo nunca viu durante o treinamento.
 
 Matriz de Confusão
