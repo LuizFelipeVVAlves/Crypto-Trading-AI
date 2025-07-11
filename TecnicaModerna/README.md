@@ -1,5 +1,32 @@
-Técnica Moderna
+# Técnica Moderna 📈
 
-<br></br>
+## Visão Geral 
 
-**Próximos passos**
+
+
+## Objetivos do Projeto 🎯
+
+
+
+## Tecnologias Utilizadas
+
+
+## Metodologia ⚙️
+
+
+## Resultados e Análise 📊
+
+
+
+
+**Acurácia**
+
+
+**Precisão**
+
+
+**Recall**
+
+
+## Conclusão 🏁
+
