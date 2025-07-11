@@ -2,9 +2,7 @@
 Esse é o relatorio do trabalho da disciplina de Inteligência Artificial TCC00297 com a professora Aline Paes
 
 ## Membros
-Eduardo Oliveira Osborne
-João Pedro Laporta Balaciano
-Luiz Felipe Vila Verdes Alves
+Eduardo Oliveira Osborne, João Pedro Laporta Balaciano, Luiz Felipe Vila Verdes Alves
 
 ## Visão Geral
 O mercado de criptomoedas é notório por sua volatilidade, o que apresenta tanto riscos quanto oportunidades. Este projeto explora o uso de Machine Learning para tentar encontrar padrões em meio a esse caos aparente.
