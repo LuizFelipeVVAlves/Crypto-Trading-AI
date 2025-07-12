@@ -30,18 +30,18 @@ Matplotlib / Seaborn para visualização de dados.
 ## Metodologia ⚙️
 O desenvolvimento do modelo seguiu um pipeline bem definido:
 
-1. Coleta e Pré-processamento
+1. Coleta e Pré-processamento: 
 Os dados históricos do Bitcoin (arquivo .csv) foram carregados, limpos e formatados. A coluna de data foi convertida para o tipo datetime e os dados foram ordenados cronologicamente.
 
-2. Engenharia de Features
+2. Engenharia de Features: 
 Para que o modelo pudesse "entender" o comportamento do mercado, algumas features foram desenvolvidas a partir de médias móveis de curto e médio prazo.
 
-3. Definição do Alvo e Prevenção de Data Leakage
+3. Definição do Alvo e Prevenção de Data Leakage: 
 O problema foi estruturado como uma classificação binária:
 
 Alvo (Target): 1 se o Preço(Amanhã) > Preço(Hoje), e 0 caso contrário.
 
-4. Treinamento do Modelo
+4. Treinamento do Modelo: 
 O conjunto de dados foi dividido cronologicamente em 80% para treino e 20% para teste. As features foram padronizadas com StandardScaler e, em seguida, um modelo de LogisticRegression foi treinado.
 
 ## Resultados e Análise 📊
