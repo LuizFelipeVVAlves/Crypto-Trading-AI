@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Foi desenvolvido um modelo algoritmo utilizando uma LLM especializada em analise de sentimento de notícias financeiras. O objetivo é prever se o preço do Bitcoin no dia seguinte irá subir ou descer com base no sentimento das manchetes de notícias do dia atual.
+Foi desenvolvido um algoritmo utilizando uma LLM especializada em analise de sentimento de notícias financeiras. O objetivo é prever se o preço do Bitcoin no dia seguinte irá subir ou descer com base no sentimento das manchetes de notícias do dia atual.
 
 ## Objetivos do Projeto 🎯
 
@@ -42,17 +42,27 @@ As previsões foram comparadas com os dados reais utilizando métricas como acur
 
 ## Resultados e Análise 📊
 
-O modelo alcançou uma performance razoável ao prever o comportamento do preço do Bitcoin apenas com base no sentimento das manchetes do dia.
+A primeira análise feita foi para o tratamento de dados das notícias, visto que cada dia possui uma lista de N notícias com diferentes sentimentos. Após alguns testes, foi definido uma estruturação inicial com dois dataframes separados de preço e noticias para as manipulações de dados, que no final se juntaram em um dataframe. A predição foi feita com base apenas no teor sentimental das notícias, com o objetivo de além de inferir a capacidade do modelo de fazer esse tipo de análise, testar como o teor das notícias diárias afeta a volatilidade da moeda.
+
+Foi decidido por utilizar um modelo já especializado e treinado com análise de sentimento para facilitar os testes. Para cada análise de notícia, atribuímos uma nova coluna 'sentiment_score' que transforma a análise 'positive/negative/neutral' em valores 1,0,-1 com o objetivo de fazer as análises de sentimento médio do dia.
+
+Com a média diária dos sentimentos previstos pelo modelo, foi possível comparar com o 'target_real' para o cálculo das métricas. O 'Target_Real' foi calculado comparando o preço do dia seguinte com o atual. Logo, se a partir da análise de sentimento das notícias do dia o modelo prevesse um teor positivo, ele iria prever que o preço subiria, e a partir disso foi feita a comparação com os dados reais de volatilidade.
+
+A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acertos e os tipos de erros cometidos.
+
+![Matriz de Confusão](../images/matriz_confusao_moderna.png)
+
+
 
 **Acurácia**
-61% → O modelo acertou 61% das previsões gerais.
+68% → O modelo acertou 68% das previsões gerais.
 
 **Precisão**
 61% → Das vezes em que o modelo previu "Sobe", ele acertou 61%.
 
 **Recall**
-61% → De todos os dias em que o preço realmente subiu, o modelo identificou corretamente 61%.
+73% → De todos os dias em que o preço realmente subiu, o modelo identificou corretamente 73%.
 
 # Conclusão 🏁
 
-A técnica moderna baseada em modelos de linguagem demonstrou um bom desempenho mesmo sem usar dados numéricos de mercado. Isso mostra que o sentimento presente nas manchetes pode ser um sinal relevante para prever o comportamento do preço. Apesar disso, o modelo pode ser aprimorado ao combinar essa abordagem textual com indicadores técnicos e históricos quantitativos, formando uma solução híbrida mais precisa e robusta para a previsão em mercados financeiros voláteis como o de criptomoedas.
+A partir da análise dos resultados, é possível inferir que a técnica moderna baseada em LLMs demonstrou um bom desempenho mesmo sem usar dados numéricos de mercado. Isso mostra que o sentimento presente nas manchetes pode ser um sinal relevante para prever o comportamento do preço. Apesar disso, o modelo pode ser aprimorado ao combinar essa abordagem textual com indicadores técnicos e históricos quantitativos, formando uma solução híbrida mais precisa e robusta para a previsão em mercados financeiros voláteis como o de criptomoedas.
