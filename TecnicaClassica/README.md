@@ -50,7 +50,7 @@ A primeira análise feita foi para a definição do Dataset. Optamos por um conj
 
 ![Matriz de Correlação](../images/matriz_correlacao.png)
 
-Como é possível observar, existem algumas features que estão fortemente relacionadas umas com as outras COM VALOR 1.0, então optamos por tira-las, deixando dentre essas apenas a média móvel dos últimos 15 dias (MMS_15)
+Como é possível observar através dos valores 1.0, existem algumas features que estão fortemente correlacionadas umas com as outras. Logo, optamos por tira-las, deixando dentre essas apenas a média móvel dos últimos 15 dias (MMS_15)
 
 O modelo treinado foi avaliado no conjunto de teste, que corresponde a dados que o modelo nunca viu durante o treinamento.
 
