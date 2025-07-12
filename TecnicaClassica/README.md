@@ -75,7 +75,7 @@ A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acerto
 
 ## Conclusão 🏁
 
-A partir da análise dos resultados, é possível concluir o resultado como esperado. O mercado de criptomoedas é conhecido por ser extremamente volátil, então naturalmente é difícil trabalhar com suas previsões. Junto a isso, utilizamos uma técnica de regressão considerada mais simplificada do que outras, justificando os valores calculados. Nesse caso, ele acabou tendendo para previsões positivas, muito provavelmente por que desde o lançamento do bitcoin, ele registrou muito mais médias positivas do que negativas.
+A partir da análise dos resultados, é possível conclui-la como esperada. O mercado de criptomoedas é conhecido por ser extremamente volátil, então naturalmente é difícil trabalhar com suas previsões. Junto a isso, utilizamos uma técnica de regressão considerada mais simplificada do que outras, justificando os valores calculados. Nesse caso, ele acabou tendendo para previsões positivas, muito provavelmente por que desde o lançamento do bitcoin, ele registrou muito mais médias positivas do que negativas.
 
 # Trabalhos Relacionados 🔍
 
