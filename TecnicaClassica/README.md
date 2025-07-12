@@ -76,3 +76,17 @@ A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acerto
 ## Conclusão 🏁
 
 A partir da análise dos resultados, é possível concluir o resultado como esperado. O mercado de criptomoedas é conhecido por ser extremamente volátil, então naturalmente é difícil trabalhar com suas previsões. Junto a isso, utilizamos uma técnica de regressão considerada mais simplificada do que outras, justificando os valores calculados. Nesse caso, ele acabou tendendo para previsões positivas, muito provavelmente por que desde o lançamento do bitcoin, ele registrou muito mais médias positivas do que negativas.
+
+# Trabalhos Relacionados 🔍
+
+Em trabalhos relacionados foi possível identificar o uso de outros modelos de classificação para esse trabalho que se mostraram com bastante potencial, como o XGBClassifier. Além disso, é possível utilizar regressões de valor contínuo para tentar prever o preço exato do bitcoin no dia seguinte, diferentemente das classificações binárias de 'sobe ou desce'.
+
+# Referências
+
+Bitcoin Price Prediction using Machine Learning in Python .https://www.geeksforgeeks.org/machine-learning/bitcoin-price-prediction-using-machine-learning-in-python/
+
+Predicting Bitcoin Market Trends with Enhanced Technical Indicator Integration and Classification Models. https://arxiv.org/html/2410.06935v1. 
+
+Bitcoin price prediction using machine learning: An approach to sample dimension engineering. https://www.sciencedirect.com/science/article/pii/S037704271930398X?via%3Dihub#sec4
+
+Agent-Based Single Cryptocurrency Trading Challenge. https://coling2025cryptotrading.thefin.ai/

@@ -44,7 +44,7 @@ As previsões foram comparadas com os dados reais utilizando métricas como acur
 
 A primeira análise feita foi para o tratamento de dados das notícias, visto que cada dia possui uma lista de N notícias com diferentes sentimentos. Após alguns testes, foi definido uma estruturação inicial com dois dataframes separados de preço e noticias para as manipulações de dados, que no final se juntaram em um dataframe. A predição foi feita com base apenas no teor sentimental das notícias, com o objetivo de além de inferir a capacidade do modelo de fazer esse tipo de análise, testar como o teor das notícias diárias afeta a volatilidade da moeda.
 
-Foi decidido por utilizar um modelo já especializado e treinado com análise de sentimento para facilitar os testes. Para cada análise de notícia, atribuímos uma nova coluna 'sentiment_score' que transforma a análise 'positive/negative/neutral' em valores 1,0,-1 com o objetivo de fazer as análises de sentimento médio do dia.
+Foi decidido por utilizar um modelo já especializado e treinado com análise de sentimento para facilitar os testes. Para cada análise de notícia, atribuímos uma nova coluna 'sentiment_score' que transforma a análise 'positive/neutral/negative' em valores 1,0,-1 com o objetivo de fazer as contas de sentimento médio por dia.
 
 Com a média diária dos sentimentos previstos pelo modelo, foi possível comparar com o 'target_real' para o cálculo das métricas. O 'Target_Real' foi calculado comparando o preço do dia seguinte com o atual. Logo, se a partir da análise de sentimento das notícias do dia o modelo prevesse um teor positivo, ele iria prever que o preço subiria, e a partir disso foi feita a comparação com os dados reais de volatilidade.
 
@@ -65,4 +65,18 @@ A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acerto
 
 # Conclusão 🏁
 
-A partir da análise dos resultados, é possível inferir que a técnica moderna baseada em LLMs demonstrou um bom desempenho mesmo sem usar dados numéricos de mercado. Isso mostra que o sentimento presente nas manchetes pode ser um sinal relevante para prever o comportamento do preço. Apesar disso, o modelo pode ser aprimorado ao combinar essa abordagem textual com indicadores técnicos e históricos quantitativos, formando uma solução híbrida mais precisa e robusta para a previsão em mercados financeiros voláteis como o de criptomoedas.
+A partir da análise dos resultados, é possível inferir que a técnica moderna baseada em LLMs demonstrou um desempenho considerável mesmo sem usar dados numéricos de mercado. Isso mostra que o sentimento presente nas manchetes pode ser um sinal relevante para prever o comportamento do preço. Apesar disso, o modelo pode ser aprimorado ao combinar essa abordagem textual com indicadores técnicos e históricos quantitativos, formando uma solução híbrida mais precisa e robusta para a previsão em mercados financeiros voláteis como o de criptomoedas.
+
+# Trabalhos Relacionados 🔍
+
+De forma similar a este projeto, vários trabalhos focam na análise de sentimento de notícias, utilizando LLMs para extrair sinais preditivos. Outras vertentes, em contraste, focam exclusivamente nos dados numéricos, aplicando modelos de Deep Learning para analisar diretamente os padrões na série histórica de preços. Uma terceira abordagem, mais avançada, utiliza LLMs como agentes de negociação autônomos que raciocinam a partir de notícias e dados para tomar decisões de compra ou venda, sendo avaliados pela sua lucratividade final.
+
+# Referências
+
+Agent-Based Single Cryptocurrency Trading Challenge. https://coling2025cryptotrading.thefin.ai/
+
+Bitcoin-Price-Prediction-using-Deep-Learning. https://github.com/Ayushverma135/Bitcoin-Price-Prediction-using-Deep-Learning
+
+Enhancing Large Language Models for Bitcoin Time Series Forecasting. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5052085
+
+LLM and NLP models in Cryptocurrency Sentiment Analysis: A Comparative Classification Study. https://github.com/Applied-AI-Research-Lab/LLM-and-NLP-models-in-Cryptocurrency-Sentiment-Analysis
