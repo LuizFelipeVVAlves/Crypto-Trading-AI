@@ -63,15 +63,15 @@ A Matriz de Confusão abaixo resume a performance do modelo, mostrando os acerto
 
 **Acurácia**
 
-50% -----> Porcentagem geral de acertos.
+50% → Porcentagem geral de acertos.
 
 **Precisão**
 
-52% -----> Das vezes que o modelo previu "Sobe", ele acertou.
+52% → Das vezes que o modelo previu "Sobe", ele acertou.
 
 **Recall**
 
-77% -----> De todas as altas reais, o modelo identificou esta porcentagem.
+77% → De todas as altas reais, o modelo identificou esta porcentagem.
 
 ## Conclusão 🏁
 
