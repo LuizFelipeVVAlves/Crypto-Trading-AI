@@ -1,5 +1,4 @@
 # Modelo Preditivo para a Direção do Preço do Bitcoin 📈
-Esse é o relatorio do trabalho da disciplina de Inteligência Artificial TCC00297 com a professora Aline Paes
 
 ## Membros
 Eduardo Oliveira Osborne, João Pedro Laporta Balaciano, Luiz Felipe Vila Verdes Alves
